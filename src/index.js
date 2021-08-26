@@ -1,6 +1,8 @@
 const express = require('express')
 const path = require('path')
 const exphbs = require('express-handlebars')
+const methodOverride = require('method-override')
+const session = require('express-session')  //Para guardar los datos de usuarios en una sesion
 
 //Initialitations
 const app = express();
@@ -17,9 +19,15 @@ app.engine('.hbs', exphbs({
 })) //Creamos el motor de plantillas
 app.set('view engine', '.hbs')
 
+
 //Midlewares
-
-
+app.use(express.urlencoded({ extended: false }))  //Para recibir inforación cuando un usuario se registre
+app.use(methodOverride('_method')) //Para que los formularios puedan usar los metodos put y delete
+app.use(session({
+    secret: 'mysecretapp',
+    resave: true,
+    saveUninitialized: true
+}))
 //Routes
 
 
