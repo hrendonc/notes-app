@@ -6,6 +6,7 @@ const session = require('express-session')  //Para guardar los datos de usuarios
 
 //Initialitations
 const app = express();
+require('./database.js');
 
 
 //settings
