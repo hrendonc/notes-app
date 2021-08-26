@@ -17,7 +17,7 @@ app.engine('.hbs', exphbs({
     partialsDir: path.join(app.get('views'), 'partials'),
     extname: '.hbs'
 })) //Creamos el motor de plantillas
-app.set('view engine', '.hbs')
+app.set('view engine', '.hbs') //Aplicamos el motor de plantillas
 
 
 //Midlewares
@@ -29,7 +29,9 @@ app.use(session({
     saveUninitialized: true
 }))
 //Routes
-
+app.use(require('./routes/index'))
+app.use(require('./routes/notes'))
+app.use(require('./routes/users'))
 
 
 //Static Files
